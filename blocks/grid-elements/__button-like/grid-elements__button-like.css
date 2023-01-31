@@ -1,0 +1,10 @@
+.grid-elements__button-like {
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/like.svg);
+  background-color: transparent;
+  background-position: center;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
