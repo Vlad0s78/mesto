@@ -23,4 +23,6 @@
 @import url("../blocks/grid-elements/__info/grid-elements__info.css");
 @import url("../blocks/grid-elements/__title/grid-elements__title.css");
 @import url("../blocks/grid-elements/__button-like/grid-elements__button-like.css");
- 
+
+@import url("../blocks/footer/footer.css");
+@import url("../blocks/footer/__copyright/footer__copyright.css");
