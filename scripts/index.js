@@ -9,7 +9,7 @@ const jobInput = document.querySelector(".popup__input_type_description");
 const profileName = document.querySelector(".profile__name"); 
 const profileDescription = document.querySelector(".profile__description");
  
-// Функция открытия, закрытия popUp. 
+/* ====================== Функция открытия, закрытия popUp. ====================== */
  
 const openCloseEditPopup = () => { 
   popUp.classList.toggle("popup_opened"); 
@@ -18,7 +18,7 @@ const openCloseEditPopup = () => {
   jobInput.value = profileDescription.textContent; // присваиваем инпуту description из профиля 
 }; 
  
-// Обработчик отправки формы. 
+/* ====================== Обработчик отправки формы. ====================== */
  
 const handleFormSubmit = (evt) => { 
   evt.preventDefault(); 
@@ -26,11 +26,13 @@ const handleFormSubmit = (evt) => {
   profileName.textContent = nameInput.value; 
   profileDescription.textContent = jobInput.value; 
  
-  openCloseEditPopup(); // Закрываем попап после отправки формы. 
+  openCloseEditPopup();
 }; 
 
-// Массив с карточками
-const initialCards = [{
+/* ====================== Массив с карточками ====================== */
+
+const initialCards = [
+{
   name: 'Архыз',
   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
 },
@@ -56,7 +58,7 @@ const initialCards = [{
 }
 ]; 
 
-// Типмплэйт 
+/* ====================== Типмплэйт ======================*/
 
 const template = document.querySelector('#template').content;
 const sectionGridElements = document.querySelector('.grid-elements');
@@ -66,6 +68,19 @@ const createCard = (item) => {
   const templateElements = template.cloneNode(true);
   templateElements.querySelector('.grid-elements__title').textContent = item.name;
   templateElements.querySelector('.grid-elements__image').src = item.link;
+
+  //Кнопка - Like
+  const likeButton = templateElements.querySelector('.grid-elements__button-like');
+  likeButton.addEventListener('click', (evt) => {
+    evt.target.classList.toggle('grid-elements__button-like_active');
+  });
+
+   //Кнопка - Удалить карточку
+  const deleteCard = templateElements.querySelector('.grid-elements__button-remove');
+  deleteCard.addEventListener('click', (evt) => {
+      evt.target.closest('.grid-elements__items').remove();
+  });
+
   return templateElements;
 };
 
@@ -74,7 +89,8 @@ initialCards.forEach((item) => {
   sectionGridElements.append(createCard(item));
 });
 
-// Слушатетели 
+/* ====================== Слушатетели ====================== */
 EditButton.addEventListener("click", openCloseEditPopup); 
 closeButton.addEventListener("click", openCloseEditPopup); 
-formElement.addEventListener("submit", handleFormSubmit); 
+formElement.addEventListener("submit", handleFormSubmit);
+
