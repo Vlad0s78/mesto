@@ -11,21 +11,11 @@ const profileDescription = document.querySelector(".profile__description");
  
 // Функция открытия, закрытия popUp. 
  
-const openEditPopup = () => { 
-  popUp.classList.add("popup_opened"); 
+const openCloseEditPopup = () => { 
+  popUp.classList.toggle("popup_opened"); 
  
   nameInput.value = profileName.textContent; // присваиваем инпуту name из профиля 
   jobInput.value = profileDescription.textContent; // присваиваем инпуту description из профиля 
-}; 
- 
-const handleCloseButtonClick = () => { 
-  popUp.classList.remove("popup_opened"); 
-}; 
- 
-const handleOverlayClick = (event) => { 
-  if (event.target === event.currentTarget) { 
-    popUp.classList.remove("popup_opened"); 
-  } 
 }; 
  
 // Обработчик отправки формы. 
@@ -36,7 +26,7 @@ const handleFormSubmit = (evt) => {
   profileName.textContent = nameInput.value; 
   profileDescription.textContent = jobInput.value; 
  
-  handleCloseButtonClick(); // Закрываем попап после отправки формы. 
+  openCloseEditPopup(); // Закрываем попап после отправки формы. 
 }; 
 
 // Массив с карточками
@@ -85,7 +75,6 @@ initialCards.forEach((item) => {
 });
 
 // Слушатетели 
-EditButton.addEventListener("click", openEditPopup); 
-closeButton.addEventListener("click", handleCloseButtonClick); 
-popUp.addEventListener("click", handleOverlayClick);
+EditButton.addEventListener("click", openCloseEditPopup); 
+closeButton.addEventListener("click", openCloseEditPopup); 
 formElement.addEventListener("submit", handleFormSubmit); 
