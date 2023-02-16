@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Проект: Mesto" />
+    <meta name="description" content="Интерактивный сайт, проекта - Mesto" />
+    <meta name="author" content="VladIsLove" />
     <link rel="stylesheet" href="./pages/index.css" />
     <title>Проект: Место</title>
   </head>
@@ -18,22 +21,27 @@
       </header>
       <main class="main">
         <section class="profile">
-          <div class="profile__container">
-            <img
-              class="profile__avatar"
-              src="./images/profile__image.jpg"
-              alt="Фото Жак-Ив Кусто"
-            />
-            <div class="profile__info">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__button-edit" type="button"></button>
-              <p class="profile__description">Исследователь океана</p>
-            </div>
+          <img
+            class="profile__avatar"
+            src="./images/profile__image.jpg"
+            alt="Фото Жак-Ив Кусто"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button
+              class="profile__button-edit"
+              type="button"
+              aria-label="Редактировать профиль"
+              title="Редактировать профиль"
+            ></button>
+            <p class="profile__description">Исследователь океана</p>
           </div>
+
           <button class="profile__button-add" type="button"></button>
         </section>
+        
         <section class="grid-elements">
-          <article class="grid-elements__items">
+          <!-- <article class="grid-elements__items">
             <img
               src="./images/grid-image__karachaevsk.jpg"
               alt="Карачаевск"
@@ -43,6 +51,7 @@
               <h2 class="grid-elements__title">Карачаевск</h2>
               <button class="grid-elements__button-like" type="button"></button>
             </div>
+            <button class="grid-elements__button-remove" type="button"></button>
           </article>
           <article class="grid-elements__items">
             <img
@@ -54,6 +63,7 @@
               <h2 class="grid-elements__title">Гора Эльбрус</h2>
               <button class="grid-elements__button-like" type="button"></button>
             </div>
+            <button class="grid-elements__button-remove" type="button"></button>
           </article>
           <article class="grid-elements__items">
             <img
@@ -65,6 +75,7 @@
               <h2 class="grid-elements__title">Домбай</h2>
               <button class="grid-elements__button-like" type="button"></button>
             </div>
+            <button class="grid-elements__button-remove" type="button"></button>
           </article>
           <article class="grid-elements__items">
             <img
@@ -76,6 +87,7 @@
               <h2 class="grid-elements__title">Гора Эльбрус</h2>
               <button class="grid-elements__button-like" type="button"></button>
             </div>
+            <button class="grid-elements__button-remove" type="button"></button>
           </article>
           <article class="grid-elements__items">
             <img
@@ -87,6 +99,7 @@
               <h2 class="grid-elements__title">Домбай</h2>
               <button class="grid-elements__button-like" type="button"></button>
             </div>
+            <button class="grid-elements__button-remove" type="button"></button>
           </article>
           <article class="grid-elements__items">
             <img
@@ -98,18 +111,19 @@
               <h2 class="grid-elements__title">Карачаево-Черкесия</h2>
               <button class="grid-elements__button-like" type="button"></button>
             </div>
-          </article>
+            <button class="grid-elements__button-remove" type="button"></button>
+          </article> -->
         </section>
       </main>
       <footer class="footer">
-        <p class="footer__copyright">&#169; 2023 Mesto Russia</p>
+        <p class="footer__copyright" lang="en">&#169; 2023 Mesto Russia</p>
       </footer>
       <div class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="formEdit" action="" method="post">
             <input
-              class="popup__input"
+              class="popup__input popup__input_type_name"
               type="text"
               name="name"
               id="name"
@@ -117,7 +131,7 @@
               required
             />
             <input
-              class="popup__input"
+              class="popup__input popup__input_type_description"
               type="text"
               name="description"
               id="description"
@@ -130,6 +144,18 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
+
+    <template id="template">
+      <article class="grid-elements__items">
+        <img src="#" alt="#" class="grid-elements__image"/>
+        <div class="grid-elements__info">
+          <h2 class="grid-elements__title"></h2>
+          <button class="grid-elements__button-like" type="button"></button>
+        </div>
+        <button class="grid-elements__button-remove" type="button"></button>
+      </article>
+    </template>
+    
+    <script async src="./scripts/index.js"></script>
   </body>
 </html>
