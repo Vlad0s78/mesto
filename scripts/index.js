@@ -1,6 +1,7 @@
-const EditButton = document.querySelector(".profile__button-edit"); 
-const popUp = document.querySelector(".popup"); 
-const closeButton = popUp.querySelector(".popup__btn-close"); 
+/* ========== Переменные Edit Profile ========== */
+const editProfileButton = document.querySelector(".profile__button-edit"); 
+const editProfilePopup = document.querySelector(".popup_edit_profile"); 
+const closeButtonEdit = editProfilePopup.querySelector(".popup__btn-close"); 
  
 const formElement = document.querySelector(".popup__form"); 
 const nameInput = document.querySelector(".popup__input_type_name"); 
@@ -8,16 +9,32 @@ const jobInput = document.querySelector(".popup__input_type_description");
  
 const profileName = document.querySelector(".profile__name"); 
 const profileDescription = document.querySelector(".profile__description");
+
+/* ========== Переменные  Add Card ========== */
+const addCardButton = document.querySelector(".profile__button-add");
+const addCardPopup = document.querySelector(".popup_add_card");
+const closeButtonAddCard = addCardPopup.querySelector(".popup__btn-close_add_card");
+
+const formAddCard = document.querySelector(".popup__form_add_card");
+const placeInput = document.querySelector(".popup__input_type_place"); 
+const urlInput = document.querySelector(".popup__input_type_url"); 
+
  
 /* ====================== Функция открытия, закрытия popUp. ====================== */
- 
-const openCloseEditPopup = () => { 
-  popUp.classList.toggle("popup_opened"); 
- 
-  nameInput.value = profileName.textContent; // присваиваем инпуту name из профиля 
-  jobInput.value = profileDescription.textContent; // присваиваем инпуту description из профиля 
-}; 
- 
+
+
+
+const openPopup = (editProfilePopup) => {
+  editProfilePopup.classList.add("popup_opened");
+
+  nameInput.value = profileName.textContent; // присваиваем инпуту name из профиля
+  jobInput.value = profileDescription.textContent; // присваиваем инпуту description из профиля
+};
+
+const сlosePopup = (editProfilePopup) => {
+  editProfilePopup.classList.remove("popup_opened");
+};
+
 /* ====================== Обработчик отправки формы. ====================== */
  
 const handleFormSubmit = (evt) => { 
@@ -26,7 +43,7 @@ const handleFormSubmit = (evt) => {
   profileName.textContent = nameInput.value; 
   profileDescription.textContent = jobInput.value; 
  
-  openCloseEditPopup();
+  сlosePopup(editProfilePopup);
 }; 
 
 /* ====================== Массив с карточками ====================== */
@@ -89,8 +106,30 @@ initialCards.forEach((item) => {
   sectionGridElements.append(createCard(item));
 });
 
-/* ====================== Слушатетели ====================== */
-EditButton.addEventListener("click", openCloseEditPopup); 
-closeButton.addEventListener("click", openCloseEditPopup); 
-formElement.addEventListener("submit", handleFormSubmit);
 
+/* ====================== Слушатетели ====================== */
+editProfileButton.addEventListener('click', () => {
+
+  openPopup(editProfilePopup);
+});
+
+closeButtonEdit.addEventListener('click', () => {
+
+  сlosePopup(editProfilePopup);
+});
+
+addCardButton.addEventListener('click', () => {
+
+  openPopup(addCardPopup);
+});
+
+closeButtonAddCard.addEventListener('click', () => {
+
+  сlosePopup(addCardPopup);
+});
+
+
+
+
+formElement.addEventListener("submit", handleFormSubmit);
+/* formAddCard.addEventListener("submit", handleFormSubmit); */
