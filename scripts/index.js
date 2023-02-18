@@ -13,7 +13,9 @@ const profileDescription = document.querySelector(".profile__description");
 /* ========== Переменные  Add Card ========== */
 const addCardButton = document.querySelector(".profile__button-add");
 const addCardPopup = document.querySelector(".popup_add_card");
-const closeButtonAddCard = addCardPopup.querySelector(".popup__btn-close_add_card");
+const closeButtonAddCard = addCardPopup.querySelector(
+  ".popup__btn-close_add_card"
+);
 
 const formAddCard = document.querySelector(".popup__form_add_card");
 const placeInput = document.querySelector(".popup__input_type_place");
@@ -27,16 +29,13 @@ const popupCloseButton = popupImage.querySelector(".popup__btn-close_image");
 
 /* ====================== Функция открытия, закрытия popUp. ====================== */
 
-const openPopup = (editProfilePopup) => {
-  editProfilePopup.classList.add("popup_opened");
+function openPopup(element) {
+  element.classList.add("popup_opened");
+}
 
-  nameInput.value = profileName.textContent; // присваиваем инпуту name из профиля
-  jobInput.value = profileDescription.textContent; // присваиваем инпуту description из профиля
-};
-
-const сlosePopup = (editProfilePopup) => {
-  editProfilePopup.classList.remove("popup_opened");
-};
+function сlosePopup(element) {
+  element.classList.remove("popup_opened");
+}
 
 /* ====================== Обработчик отправки формы Profile. ====================== */
 
@@ -58,8 +57,6 @@ const handleAddCardFormSubmit = (evt) => {
     name: placeInput.value,
     link: urlInput.value,
   };
-
-  initialCards.unshift(newCard);
 
   sectionGridElements.prepend(createCard(newCard));
 
@@ -105,9 +102,13 @@ const sectionGridElements = document.querySelector(".grid-elements");
 // создаем DOM-элемент на шаблоне template и возвращаем его.
 const createCard = (item) => {
   const templateElements = template.cloneNode(true);
+  const elementImageCard = templateElements.querySelector(
+    ".grid-elements__image"
+  );
   templateElements.querySelector(".grid-elements__title").textContent =
     item.name;
-  templateElements.querySelector(".grid-elements__image").src = item.link;
+  elementImageCard.src = item.link;
+  elementImageCard.alt = item.name;
 
   // Открываем попап картинки.
   templateElements
@@ -146,6 +147,9 @@ initialCards.forEach((item) => {
 /* ====================== Слушатетели ====================== */
 editProfileButton.addEventListener("click", () => {
   openPopup(editProfilePopup);
+
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileDescription.textContent;
 });
 
 closeButtonEdit.addEventListener("click", () => {
