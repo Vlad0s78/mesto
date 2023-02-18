@@ -19,10 +19,13 @@ const formAddCard = document.querySelector(".popup__form_add_card");
 const placeInput = document.querySelector(".popup__input_type_place"); 
 const urlInput = document.querySelector(".popup__input_type_url"); 
 
+/* ========== Переменные  Add Image Card ========== */
+const popupImage = document.querySelector(".popup_image");
+const popupPhoto = popupImage.querySelector(".popup__photo");
+const popupPhotoName = popupImage.querySelector(".popup__photo-name")
+const popupCloseButton = popupImage.querySelector(".popup__btn-close_image");
  
 /* ====================== Функция открытия, закрытия popUp. ====================== */
-
-
 
 const openPopup = (editProfilePopup) => {
   editProfilePopup.classList.add("popup_opened");
@@ -35,7 +38,7 @@ const сlosePopup = (editProfilePopup) => {
   editProfilePopup.classList.remove("popup_opened");
 };
 
-/* ====================== Обработчик отправки формы. ====================== */
+/* ====================== Обработчик отправки формы Profile. ====================== */
  
 const handleFormSubmit = (evt) => { 
   evt.preventDefault(); 
@@ -44,7 +47,26 @@ const handleFormSubmit = (evt) => {
   profileDescription.textContent = jobInput.value; 
  
   сlosePopup(editProfilePopup);
-}; 
+};
+
+/* ====================== Обработчик отправки формы Add Card. ====================== */
+
+const handleAddCardFormSubmit = (evt) => {
+  evt.preventDefault();
+
+  const newCard = {
+    name: placeInput.value,
+    link: urlInput.value
+  };
+  
+  initialCards.unshift(newCard);
+
+  sectionGridElements.prepend(createCard(newCard));
+  
+  formAddCard.reset();
+
+  сlosePopup(addCardPopup);
+}
 
 /* ====================== Массив с карточками ====================== */
 
@@ -86,6 +108,14 @@ const createCard = (item) => {
   templateElements.querySelector('.grid-elements__title').textContent = item.name;
   templateElements.querySelector('.grid-elements__image').src = item.link;
 
+  // Открываем попап картинки.
+  templateElements.querySelector('.grid-elements__image').addEventListener('click', () => {
+    popupPhoto.src = item.link; 
+    popupPhoto.alt = item.name; 
+    popupPhotoName.textContent = item.name; 
+    openPopup(popupImage);
+  });
+
   //Кнопка - Like
   const likeButton = templateElements.querySelector('.grid-elements__button-like');
   likeButton.addEventListener('click', (evt) => {
@@ -98,7 +128,7 @@ const createCard = (item) => {
       evt.target.closest('.grid-elements__items').remove();
   });
 
-  return templateElements;
+  return templateElements; 
 };
 
 // Перебираем массив и вызываем функцию для каждого элемента массива и добавляем результат в элемент sectionGridElements через метод append()
@@ -128,8 +158,11 @@ closeButtonAddCard.addEventListener('click', () => {
   сlosePopup(addCardPopup);
 });
 
+popupCloseButton.addEventListener('click', () => {
+  сlosePopup(popupImage);
+});
 
 
 
 formElement.addEventListener("submit", handleFormSubmit);
-/* formAddCard.addEventListener("submit", handleFormSubmit); */
+formAddCard.addEventListener("submit", handleAddCardFormSubmit);
