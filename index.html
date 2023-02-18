@@ -20,7 +20,6 @@
         />
       </header>
       <main class="main">
-
         <section class="profile">
           <img
             class="profile__avatar"
@@ -37,54 +36,91 @@
             ></button>
             <p class="profile__description">Исследователь океана</p>
           </div>
-
           <button class="profile__button-add" type="button"></button>
         </section>
-        
         <section class="grid-elements"></section>
-
       </main>
       <footer class="footer">
         <p class="footer__copyright" lang="en">&#169; 2023 Mesto Russia</p>
       </footer>
-
       <div class="popup popup_edit_profile">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="formEdit" action="" method="post">
-            <input class="popup__input popup__input_type_name" type="text" name="name" id="name" placeholder="Имя" required />
-            <input class="popup__input popup__input_type_description" type="text" name="description" id="description" placeholder="О себе" required />
+            <input
+              class="popup__input popup__input_type_name"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Имя"
+              required
+            />
+            <input
+              class="popup__input popup__input_type_description"
+              type="text"
+              name="description"
+              id="description"
+              placeholder="О себе"
+              required
+            />
             <button class="popup__btn-submit" type="submit">Сохранить</button>
           </form>
           <button class="popup__btn-close" type="button"></button>
         </div>
       </div>
-
-    <div class="popup popup_add_card">
-      <div class="popup__container">
-        <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__form_add_card" name="formEditAddCard" action="" method="post">
-          <input class="popup__input popup__input_type_place" type="text" name="place" id="place" placeholder="Название" required />
-          <input class="popup__input popup__input_type_url" type="url" name="url" id="url" placeholder="Ссылка на картинку" required />
-          <button class="popup__btn-submit popup__btn-submit_add_card" type="submit">Добавить</button>
-        </form>
-        <button class="popup__btn-close popup__btn-close_add_card" type="button"></button>
+      <div class="popup popup_add_card">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form
+            class="popup__form popup__form_add_card"
+            name="formEditAddCard"
+            action=""
+            method="post"
+          >
+            <input
+              class="popup__input popup__input_type_place"
+              type="text"
+              name="place"
+              id="place"
+              placeholder="Название"
+              required
+            />
+            <input
+              class="popup__input popup__input_type_url"
+              type="url"
+              name="url"
+              id="url"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <button
+              class="popup__btn-submit popup__btn-submit_add_card"
+              type="submit"
+            >
+              Добавить
+            </button>
+          </form>
+          <button
+            class="popup__btn-close popup__btn-close_add_card"
+            type="button"
+          ></button>
+        </div>
+      </div>
+      <div class="popup popup_image">
+        <div class="popup__container-image">
+          <button
+            class="popup__btn-close popup__btn-close_image"
+            type="button"
+          ></button>
+          <img src="" alt="#" class="popup__photo" />
+          <p class="popup__photo-name">AlloNaxhuy</p>
+        </div>
       </div>
     </div>
 
-    <div class="popup popup_image">
-      <div class="popup__container-image">
-        <button class="popup__btn-close popup__btn-close_image" type="button"></button>
-        <img src="" alt="#" class="popup__photo">
-        <p class="popup__photo-name">AlloNaxhuy</p>
-      </div>
-    </div>
-
-  </div>
-    
     <template id="template">
       <article class="grid-elements__items">
-        <img src="#" alt="#" class="grid-elements__image"/>
+        <img src="#" alt="#" class="grid-elements__image" />
         <div class="grid-elements__info">
           <h2 class="grid-elements__title"></h2>
           <button class="grid-elements__button-like" type="button"></button>
@@ -92,7 +128,6 @@
         <button class="grid-elements__button-remove" type="button"></button>
       </article>
     </template>
-    
     <script async src="./scripts/index.js"></script>
   </body>
 </html>
