@@ -21,6 +21,7 @@
 * Grid Layout;
 * Семантическая верстка;
 * Адаптивная верстка под разные разрешения экрана.
+* Реализована проверка валидации форм с помощью JS на стандартных браузерных ошибках.
 
 ## Планы по доработке проекта:
 
@@ -28,4 +29,4 @@
 
 ## Figma
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=50160%3A110&t=MUSTP21XuZis6OwL-0)
+* [Ссылка на макет в Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1&t=YTjz4wVPnPff7Hq5-0)

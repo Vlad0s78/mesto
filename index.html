@@ -43,26 +43,39 @@
       <footer class="footer">
         <p class="footer__copyright" lang="en">&#169; 2023 Mesto Russia</p>
       </footer>
+
       <div class="popup popup_edit_profile">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="formEdit" action="" method="post">
+          <form
+            class="popup__form popup__form_edit_profile"
+            name="formEdit"
+            action=""
+            method="post"
+            novalidate
+          >
             <input
               class="popup__input popup__input_type_name"
               type="text"
               name="name"
-              id="name"
+              id="input-name"
+              minlength="2"
+              maxlength="40"
               placeholder="Имя"
               required
             />
+            <span class="popup__input-error input-name-error"></span>
             <input
               class="popup__input popup__input_type_description"
               type="text"
-              name="description"
-              id="description"
+              name="input-description"
+              id="input-description"
+              minlength="2"
+              maxlength="200"
               placeholder="О себе"
               required
             />
+            <span class="popup__input-error input-description-error"></span>
             <button class="popup__btn-submit" type="submit">Сохранить</button>
           </form>
           <button class="popup__btn-close" type="button"></button>
@@ -73,26 +86,31 @@
           <h2 class="popup__title">Новое место</h2>
           <form
             class="popup__form popup__form_add_card"
-            name="formEditAddCard"
+            name="formEdit"
             action=""
             method="post"
+            novalidate
           >
             <input
               class="popup__input popup__input_type_place"
               type="text"
               name="place"
-              id="place"
+              id="input-place"
+              minlength="2"
+              maxlength="30"
               placeholder="Название"
               required
             />
+            <span class="popup__input-error input-place-error"></span>
             <input
               class="popup__input popup__input_type_url"
               type="url"
               name="url"
-              id="url"
+              id="input-url"
               placeholder="Ссылка на картинку"
               required
             />
+            <span class="popup__input-error input-url-error"></span>
             <button
               class="popup__btn-submit popup__btn-submit_add_card"
               type="submit"
@@ -117,7 +135,6 @@
         </div>
       </div>
     </div>
-
     <template id="template">
       <article class="grid-elements__items">
         <img src="#" alt="#" class="grid-elements__image" />
@@ -128,6 +145,8 @@
         <button class="grid-elements__button-remove" type="button"></button>
       </article>
     </template>
+    <script async src="./scripts/cards.js"></script>
     <script async src="./scripts/index.js"></script>
+    <script async src="./scripts/validate.js"></script>
   </body>
 </html>
