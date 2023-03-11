@@ -85,7 +85,7 @@ const toggleButtonState = (inputList, buttonElement, settings) => {
 
 /* ======== Функция сброса ошибок ======== */
 
-function resetFormErrors(formElement, settings) {
+function resetValidation(formElement, settings) {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector)); // Находим все поля ввода в форме и создаем массив из них
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 

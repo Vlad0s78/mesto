@@ -31,17 +31,15 @@ const sectionGridElements = document.querySelector(".grid-elements");
 
 function openPopup(element) {
   element.classList.add("popup_opened");
-  element.addEventListener("click", closeOverlay);
   document.addEventListener("keydown", closePopupOnEscape);
 }
 
 function closePopup(element) {
   element.classList.remove("popup_opened");
-  element.removeEventListener("click", closeOverlay);
   document.removeEventListener("keydown", closePopupOnEscape);
 }
 
-function closeOverlay(evt) {
+function handleCloseByOverlay(evt) {
   if (evt.target === evt.currentTarget) {
     const openedPopup = document.querySelector(".popup_opened");
     closePopup(openedPopup);
@@ -126,7 +124,7 @@ buttonEditProfile.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
 
-  resetFormErrors(formEditProfile, settings);
+  resetValidation(formEditProfile, settings);
 });
 
 buttonCloseEdit.addEventListener("click", () => {
@@ -136,7 +134,7 @@ buttonCloseEdit.addEventListener("click", () => {
 buttonAddCard.addEventListener("click", () => {
   openPopup(popupAddCard);
   formAddCard.reset();
-  resetFormErrors(formAddCard, settings);
+  resetValidation(formAddCard, settings);
 });
 
 buttonCloseAddCard.addEventListener("click", () => {
@@ -146,6 +144,12 @@ buttonCloseAddCard.addEventListener("click", () => {
 popupCloseButton.addEventListener("click", () => {
   closePopup(popupImage);
 });
+
+const popups = Array.from(document.querySelectorAll('.popup'))
+
+popups.forEach((popup) => {
+    popup.addEventListener('click', handleCloseByOverlay)
+})
 
 formEditProfile.addEventListener("submit", handleFormEditProfileSubmit);
 formAddCard.addEventListener("submit", handleAddCardFormSubmit);
